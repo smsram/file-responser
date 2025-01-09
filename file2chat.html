@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Upload with User Prompt</title>
+    <style>
+        .typing-indicator {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.typing-indicator .dot {
+    width: 8px;
+    height: 8px;
+    background-color: gray;
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+}
+
+.typing-indicator .dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator .dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0%, 80%, 100% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <h1>Auto Upload to File.io with User Prompt</h1>
+
+    <!-- User Prompt Section -->
+    <label for="userPrompt">User Prompt:</label><br>
+    <input type="text" id="userPrompt" name="userPrompt" placeholder="Enter your prompt"><br><br>
+
+    <!-- File Upload Section -->
+    <h2>Upload a PDF File</h2>
+    <label for="fileInput">Choose a PDF file:</label>
+    <input type="file" id="fileInput" accept="application/pdf">
+    <div id="fileResult" style="margin-top: 20px;">
+        <h3>PDF File Uploaded Successfully</h3>
+        <a id="fileLink" href="#" target="_blank"></a>
+    </div>
+
+    <hr>
+
+    <!-- Image Upload Section -->
+    <h2>Upload an Image</h2>
+    <label for="imageInput">Choose an image:</label>
+    <input type="file" id="imageInput" accept="image/*">
+    <div id="imageResult" style="margin-top: 20px; display: none;">
+        <h3>Image Uploaded Successfully</h3>
+        <a id="imageLink" href="#" target="_blank" style="display: none;"></a>
+    </div>
+
+    <!-- Submit Button -->
+    <br>
+    <button id="submitButton">Submit to Endpoint</button>
+    <div class="chat-messages" id="chat-messages">
+        <!-- Chat messages will appear here -->
+    </div>
+
+    <script src="file2chat.js"></script>
+</body>
+</html>
